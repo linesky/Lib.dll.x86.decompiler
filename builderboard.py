@@ -1,4 +1,4 @@
-xx="""keyss[$1]=tk.Button(self.bottomframe, text='$0',command=ckeyss$1 ,borderwidth=1,bg='red').grid(row=$2, column=$3)
+xx="""keyss[$1]=tk.Button(self.bottomframe, text='$0',command=lambda:self.ckeyss('$0') ,borderwidth=1,bg='red').grid(row=$2, column=$3)
 """
 print("\x1bc\x1b[41;37m")
 s=input("past key strings separete by , order? ")
