@@ -98,13 +98,17 @@ class BareboneBuilder:
         global iindex
         list1=[]
         list2=[]
-        iindex=0
+        
         filename = tk.filedialog.askopenfilename(title="load file")
         f1=open(filename,"r")
         heads=f1.read()
         f1.close()
         self.text_area.insert(tk.END,"" )
         self.text_.insert(tk.END,"" )
+        for n in range(iindex):
+            self.ls.delete(0) 
+        iindex=0
+
         ff1=heads.split("\x01|")
         for n in ff1:
             ff2=n.split("\x02=")
