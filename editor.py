@@ -14,23 +14,27 @@ class BareboneBuilder:
         self.root = root
         self.root.title("editor")
 
-        # Janela amarela
-        self.root.configure(bg='red')
-
+        
+        
+        self.menubar = tk.Menu(self.root)
+        self.mainmenu = tk.Menu(self.menubar, tearoff=0)
+        
         # Área de texto
-        self.text_area = tk.Text(self.root, height=10, width=50)
+        self.text_area = tk.Text(self.root, height=25, width=80,bg='red')
         self.text_area.pack(pady=10)
 
         # Botões
-        self.build_button = tk.Button(self.root, text="new file", command=self.build_kernel)
-        self.build_button.pack(pady=5)
+        self.b1=self.mainmenu.add_command( label="new file", command=self.build_kernel)
+        
 
-        self.run_button = tk.Button(self.root, text="load file", command=self.run_kernel)
-        self.run_button.pack(pady=5)
+        self.b2=self.mainmenu.add_command( label="load file", command=self.run_kernel)
+        
 
-        self.copy_button = tk.Button(self.root, text="save file", command=self.copy_file)
-        self.copy_button.pack(pady=5)
-
+        self.b3=self.mainmenu.add_command( label="save file", command=self.copy_file)
+        self.b6=self.mainmenu.add_command( label="exit", command=self.root.quit)
+        self.b5=self.menubar.add_cascade(label="main", menu=self.mainmenu)
+        
+        self.b4=self.root.configure(menu=self.menubar,bg='red')
 
 
     def build_kernel(self):
@@ -63,4 +67,5 @@ class BareboneBuilder:
 if __name__ == "__main__":
     root = tk.Tk()
     builder = BareboneBuilder(root)
+    
     root.mainloop()
