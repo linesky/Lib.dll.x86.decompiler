@@ -11,3 +11,5 @@ you can use the you editor favorite or you can use this modules
 
 
 solved the bug off double loader
+
+add a keyboard builder to customize on screen keyboard
