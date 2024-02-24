@@ -99,7 +99,7 @@ class BareboneBuilder:
         global iindex
         list1=[]
         list2=[]
-        iindex=0
+
         filename = tk.filedialog.askopenfilename(title="load file")
         f1=open(filename,"r")
         heads=f1.read()
