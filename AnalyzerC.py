@@ -7,6 +7,7 @@ from tkinter import font as tkFont
 import subprocess
 import shutil
 import os
+import re
 
 
 iindex=0
@@ -105,23 +106,80 @@ class BareboneBuilder:
         f1.close()
         self.text_area.insert(tk.END,"" )
         self.text_.insert(tk.END,"" )
-        ff1=heads.split("}")
+        heads=heads.replace("\r\n","\n")
+        heads=heads.replace("\n\r","\n")
+        heads=heads.replace("\r","\n")
+        heads=heads.replace("\n\n\n\n\n\n","\n")
+        heads=heads.replace("\n\n\n\n\n","\n")
+        heads=heads.replace("\n\n\n\n","\n")
+        heads=heads.replace("\n\n\n","\n")
+        heads=heads.replace("\n\n","\n")
+        for n in range(iindex):
+            self.ls.delete(0) 
+        iindex=0
+         
+
+        ff1=heads.split("\n")
+        beford:int=0
+        sss=""
+        s1="defines"
         
         for n in ff1:
-            ppos=n.find("{")
-            try:
-                if ppos>-1:
-                    fff1:str=n[0:ppos]
+            t:bool=False
+            ppos1=n.find("(")
+            ppos2=n.find(")")
+            ppos3=n.find("}")
+            ppos4=n.find(";")
+            ppos5=n.find("int ")
+            ppos6=n.find("void ")
+            ppos7=n.find("long ")
+            ppos8=n.find("float ")
+            ppos9=n.find("double ")
+            ppos10=n.find("size_t ")
+            ppos11=n.find("char ")
+            ppos15=n.find("int*")
+            ppos16=n.find("void*")
+            ppos17=n.find("long*")
+            ppos18=n.find("float*")
+            ppos19=n.find("double*")
+            ppos20=n.find("size_t*")
+            ppos21=n.find("char*")
+
+            ooor:bool=ppos5>-1 or ppos6>-1 or ppos7>-1 or ppos8>-1 or ppos9>-1 or ppos10>-1 or ppos11>-1 or ppos15>-1 or ppos16>-1 or ppos17>-1 or ppos18>-1 or ppos19>-1 or ppos20>-1 or ppos21>-1
+            
+            if beford>-1 and ppos1>-1 and ppos2>-1 and ppos4<0 and ooor:
                 
-                    fff2:str=n[ppos:]
+                try:
+                    if 0==0:
+                        
+                        fff1:str=s1
+                
+                        fff2:str=sss
+                        list1=list1+[fff1]
+                        self.ls.insert(iindex,fff1)
+                        list2=list2+[fff2]
+                        iindex+=1
+                        s1=n
+                        sss=n+"\n"
+                except:
+                    print(n)
+            else:
+                sss=sss+"\n"+n
+            beford=ppos3;
+        if 0==0:
+            try:
+                if 0==0:
+                    fff1:str=s1
+                   
+                    fff2:str=sss
                     list1=list1+[fff1]
                     self.ls.insert(iindex,fff1)
                     list2=list2+[fff2]
                     iindex+=1
-
+                    s1=n
+                    sss=n+"\n"
             except:
-                fff1=""
-
+               print(n)
 
 
 
