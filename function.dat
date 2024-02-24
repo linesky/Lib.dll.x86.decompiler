@@ -1,0 +1,9 @@
+add=def adds(a:float,b:float)->float:
+    return a + b
+|sub=def subs(a:float,b:float)->float:
+    return a - b
+|mult=def mults(a:float,b:float)->float:
+    return a * b
+|div=def divs(a:float,b:float)->float:
+    return a / b
+|
